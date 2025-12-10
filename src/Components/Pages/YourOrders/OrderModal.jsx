@@ -1,10 +1,8 @@
-/* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 
-const OrderModal = ({ items }) => {
+const OrderModal = ({ items , customer }) => {
 
-  console.log('items', items);
   return (
     <div>
       
@@ -30,13 +28,14 @@ const OrderModal = ({ items }) => {
                       <span>Price : </span>
                       {data?.originalPrice}
                     </h1>
+                
                     <h1 className="text-black text-xl">
-                      <span>Total Price : </span>
-                      {data?.price}
+                      <span>DiscountPrice : </span>
+                      {data?.discountPrice}
                     </h1>
-                    <h1 className="text-black text-xl">
-                      <span>Type : </span>
-                      {data?.langues}
+                        <h1 className="text-black text-xl">
+                      <span>Adress: </span>
+                      {customer.address.Name} , {customer.address.Location} , {customer.address.state} , {customer.address.zipCode} ,
                     </h1>
                    
                     <div className="flex">

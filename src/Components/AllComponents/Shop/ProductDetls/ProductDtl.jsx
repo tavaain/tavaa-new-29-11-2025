@@ -5,12 +5,14 @@ import { FaIndianRupeeSign } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
 import { saveLocalData } from "../../Shared/LocalStorage.JSX";
 import { RiSpam2Fill } from "react-icons/ri";
+import Modal from "../../PmentPage/Modal";
 
 const ProductDtl = () => {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+  const products = useLoaderData();
 
   const {
     name,
@@ -21,7 +23,7 @@ const ProductDtl = () => {
     _id,
     discount,
     discountPrice,
-  } = useLoaderData();
+  } = products;
 
   const { setMaulLoading, maulLoading, user } = UseAuth();
 
@@ -64,8 +66,11 @@ const ProductDtl = () => {
     setMaulLoading(!maulLoading);
   };
 
+  
+  
   return (
     <div className="pt-28 pb-10 px-4 bg-[#f7f7f7]">
+      <Modal totalPrice={discountPrice} products={localPostdata} />
 
       {/* FULL SCREEN VIEWER */}
       {showFullscreen && (
@@ -222,16 +227,16 @@ const ProductDtl = () => {
 
             {user?.uid ? (
               <button
-                disabled
+                  onClick={() => document.getElementById("my_modal_5").showModal()}
                 className="
                   bg-gray-400 text-white py-3 rounded-md text-lg flex items-center justify-center gap-2
-                  cursor-not-allowed
+                  
                 "
               >
-                <RiSpam2Fill /> Buy Now
+                Buy Now
               </button>
             ) : (
-              <Link
+              <Link to="/login"
                 className="
                   border border-black py-3 rounded-md text-lg text-center
                   hover:bg-black hover:text-white transition-all

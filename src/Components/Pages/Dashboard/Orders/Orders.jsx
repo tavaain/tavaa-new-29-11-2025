@@ -101,12 +101,12 @@ console.log('final daata test' , orders)
                         </thead>
                         <tbody>
                             {orders?.map((order) => (
-                                <tr key={order._id}>
-                                    <td>{order._id}</td>
-                                    <td>{order.orderDate}</td>
-                                    <td>{order.customer.name}</td>
-                                    <td>{order.customer.phone}</td>
-                                    <td>{order.items.length}</td>
+                                <tr key={order?._id}>
+                                    <td>{order?._id}</td>
+                                    <td>{order?.orderDate}</td>
+                                    <td>{order?.customer?.name}</td>
+                                    <td>{order?.customer?.phone}</td>
+                                    <td>{order?.items?.length}</td>
                                     <td>
                                         <p>{order?.customer?.address?.Location}, {order?.customer?.address?.zipCode}</p>
                                     </td>
@@ -121,7 +121,7 @@ console.log('final daata test' , orders)
                                             {order.status}
                                         </span>
                                     </td>
-                                    <td>₹{order.totalAmount.toFixed(2)}</td>
+                                    {/* <td>₹{order?.totalAmount.toFixed(2)}</td> */}
                                     <td className="flex gap-2 items-center">
                                         <Link to={`/dashboard/order/${order._id}`} className="text-green-700 bg-green-200 p-1 rounded-md text-lg"><GrView /></Link>
                                         <button onClick={() => handleDeleteById(order._id)} className="text-red-700 bg-red-200 p-1 rounded-md text-lg"><FaRegTrashAlt /></button>

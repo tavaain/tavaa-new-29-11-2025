@@ -43,7 +43,6 @@ const YourOrders = () => {
     setFindItems(items);
     document.getElementById("my_modal_5").showModal();
   };
-
   return (
     <div>
       {/* ✅ WELCOME MODAL */}
@@ -85,12 +84,13 @@ const YourOrders = () => {
                 <th>Items</th>
                 <th>Total</th>
                 <th>Status</th>
-                <th>Invoice</th>
+                {/* <th>Invoice</th> */}
                 <th>View</th>
               </tr>
             </thead>
             <tbody>
               {orders?.map((order) => (
+                <>
                 <tr key={order._id}>
                   <td>{order.orderDate}</td>
                   <td>{order._id}</td>
@@ -115,7 +115,7 @@ const YourOrders = () => {
                     </span>
                   </td>
 
-                  <td>
+                  {/* <td>
                     <button onClick={() => handleSelectOrder(order._id)}>
                       <BlobProvider
                         document={
@@ -136,19 +136,19 @@ const YourOrders = () => {
                         )}
                       </BlobProvider>
                     </button>
-                  </td>
+                  </td> */}
 
                   <td>
                     <GrView onClick={() => handelclick(order.items)} />
                   </td>
                 </tr>
-              ))}
+      <OrderModal items={findItems}  customer ={order.customer}/>
+             </> ))}
             </tbody>
           </table>
         </div>
       </div>
 
-      <OrderModal items={findItems} />
     </div>
   );
 };

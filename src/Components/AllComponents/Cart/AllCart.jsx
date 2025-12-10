@@ -3,9 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import { saveLocalData, getLocaldata } from "../Shared/LocalStorage.JSX";
 import { AuthContext } from "../Hooks/AuthProvider";
 import { RiSpam2Fill } from "react-icons/ri";
+import Modal from "../PmentPage/Modal";
 
-const AllCart = ({ datas, dataUp, setDataUp }) => {
-  const { _id, name, price, discountPrice, discount, image } = datas;
+const AllCart = ({ datas, dataUp, setDataUp , }) => {
+  const { _id, name, price, discountPrice, discount, image , totalAmount} = datas;
   const { maulLoading, setMaulLoading, setDLoading, DLoading } = useContext(AuthContext);
 
   const [products, setProducts] = useState([]);
@@ -55,7 +56,8 @@ const AllCart = ({ datas, dataUp, setDataUp }) => {
 
   return (
     <div className="max-w-3xl mx-auto bg-white shadow-lg border rounded-xl p-4 mb-6 flex flex-col md:flex-row gap-5 items-center">
-      
+            <Modal totalPrice={totalAmount} products={datas} />
+
       {/* Image */}
       <div className="w-28 h-28 md:w-32 md:h-32 rounded-lg overflow-hidden border bg-gray-100">
         <img src={image} alt={name} className="w-full h-full object-cover" />
@@ -111,12 +113,11 @@ const AllCart = ({ datas, dataUp, setDataUp }) => {
 
        
         <button
-  disabled
+                      onClick={() => document.getElementById("my_modal_5").showModal()}
   className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-semibold shadow 
-             flex items-center justify-center gap-2 cursor-not-allowed"
+             flex items-center justify-center gap-2 "
 >
-  <RiSpam2Fill className="text-lg" />
-  Buy Now
+  Buy Now..
 </button>
 
       </div>

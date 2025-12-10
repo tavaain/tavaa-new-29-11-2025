@@ -38,6 +38,7 @@ export const router = createBrowserRouter([
       { path: "/ShopPage", element: <Shoop /> },
       { path: "/NewArrival", element: <NewArrivalPage /> },
       { path: "/yourOrders", element: <YourOrders /> },
+      
       { path: "/product/:id", element: <ProductDtl />,
         loader: async ({ params }) =>
           fetch(

@@ -61,6 +61,8 @@ const Cart = () => {
                 datas={item} 
                 dataUp={dataUp} 
                 setDataUp={setDataUp} 
+                totalPrice={totalDiscountPrice}
+                 products={products}
               />
             ))}
           </div>
@@ -102,8 +104,8 @@ const Cart = () => {
                     onClick={() => document.getElementById("my_modal_5").showModal()}
                     
                     className="w-full hover:bg-orange-600 transition bg-orange-500 text-white px-5 py-2 rounded-lg text-sm font-semibold shadow 
-             flex items-center justify-center gap-2 cursor-not-allowed"
-                  > <RiSpam2Fill />  Comming Soon..</button>
+             flex items-center justify-center gap-2 "
+                  >   Buy Now..</button>
                 ) : (
                   <Link to="/login">
                     <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-4 rounded-lg font-semibold transition shadow-lg">
@@ -121,7 +123,7 @@ const Cart = () => {
           <h2 className="text-xl font-semibold text-gray-700 mb-4">
             Your cart is empty 🛒
           </h2>
-          <Link to="/Category">
+          <Link to="/ShopPage">
             <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg shadow font-semibold">
               Go to Shop
             </button>
